@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "MovieFlix",
-    "slug": "movieflix",
+    "name": "CineFlix",
+    "slug": "cineflix",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",

@@ -1,77 +1,68 @@
-interface Movie {
-  id: number;
+export interface TraktIds {
+  trakt: number;
+  slug: string;
+  imdb: string;
+  tmdb: number;
+  tvdb?: number;
+}
+
+export interface TraktMovie {
   title: string;
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  original_language: string;
-  original_title: string;
+  year: number;
+  ids: TraktIds;
+  tagline: string;
   overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
-
-interface TrendingMovie {
-  searchTerm: string;
-  movie_id: number;
-  title: string;
-  count: number;
-  poster_url: string;
-}
-
-interface MovieDetails {
-  adult: boolean;
-  backdrop_path: string | null;
-  belongs_to_collection: {
-    id: number;
-    name: string;
-    poster_path: string;
-    backdrop_path: string;
-  } | null;
-  budget: number;
-  genres: {
-    id: number;
-    name: string;
-  }[];
-  homepage: string | null;
-  id: number;
-  imdb_id: string | null;
-  original_language: string;
-  original_title: string;
-  overview: string | null;
-  popularity: number;
-  poster_path: string | null;
-  production_companies: {
-    id: number;
-    logo_path: string | null;
-    name: string;
-    origin_country: string;
-  }[];
-  production_countries: {
-    iso_3166_1: string;
-    name: string;
-  }[];
-  release_date: string;
-  revenue: number;
-  runtime: number | null;
-  spoken_languages: {
-    english_name: string;
-    iso_639_1: string;
-    name: string;
-  }[];
+  released: string;
+  runtime: number;
+  country: string;
+  trailer: string;
+  homepage: string;
   status: string;
-  tagline: string | null;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
+  rating: number;
+  votes: number;
+  comment_count: number;
+  updated_at: string;
+  language: string;
+  available_translations: string[];
+  genres: string[];
+  certification: string;
 }
 
-interface TrendingCardProps {
-  movie: TrendingMovie;
-  index: number;
+export interface TraktShow {
+  title: string;
+  year: number;
+  ids: TraktIds;
+  overview: string;
+  first_aired: string;
+  airs: {
+    day: string;
+    time: string;
+    timezone: string;
+  };
+  runtime: number;
+  certification: string;
+  network: string;
+  country: string;
+  trailer: string;
+  homepage: string;
+  status: string;
+  rating: number;
+  votes: number;
+  comment_count: number;
+  updated_at: string;
+  language: string;
+  available_translations: string[];
+  genres: string[];
+  aired_episodes: number;
 }
+
+export type TraktContent = TraktMovie | TraktShow;
+
+export interface TraktSearchResult {
+  type: 'movie' | 'show';
+  score: number;
+  movie?: TraktMovie;
+  show?: TraktShow;
+}
+
+
